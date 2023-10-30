@@ -5,6 +5,7 @@ plugins {
 
 group 'ru.clevertec'
 version '1.0-SNAPSHOT'
+compileJava.options.encoding = 'UTF-8'
 
 java {
     sourceCompatibility = JavaLanguageVersion.of(17)
@@ -22,8 +23,8 @@ ext {
 
 dependencies {
     testImplementation "org.mockito:mockito-junit-jupiter:${mockitoVersion}"
-
     testImplementation 'org.assertj:assertj-core:3.24.2'
+    testImplementation("org.junit.jupiter:junit-jupiter-params:${junitVersion}")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }

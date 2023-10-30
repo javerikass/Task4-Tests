@@ -1,5 +1,6 @@
 package ru.clevertec.product.mapper;
 
+import java.util.List;
 import ru.clevertec.product.data.InfoProductDto;
 import ru.clevertec.product.data.ProductDto;
 import ru.clevertec.product.entity.Product;
@@ -31,4 +32,12 @@ public interface ProductMapper {
      * @return обновлённый продукт
      */
     Product merge(Product product, ProductDto productDto);
+
+    /**
+     * Маппит текущий список продуктов в список DTO без даты
+     *
+     * @param productList - список продуктов
+     * @return список DTO с идентификатором
+     */
+    List<InfoProductDto> toListInfoProductDto(List<Product> productList);
 }
