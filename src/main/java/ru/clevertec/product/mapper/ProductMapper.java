@@ -3,15 +3,12 @@ package ru.clevertec.product.mapper;
 import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 import ru.clevertec.product.data.InfoProductDto;
 import ru.clevertec.product.data.ProductDto;
 import ru.clevertec.product.entity.Product;
 
 @Mapper()
 public interface ProductMapper {
-
-  ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
 
   /**
    * Маппит DTO в продукт без UUID
