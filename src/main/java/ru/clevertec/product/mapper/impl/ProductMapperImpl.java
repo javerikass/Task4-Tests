@@ -27,4 +27,5 @@ public class ProductMapperImpl implements ProductMapper {
   public List<InfoProductDto> toListInfoProductDto(List<Product> productList) {
     return null;
   }
+
 }

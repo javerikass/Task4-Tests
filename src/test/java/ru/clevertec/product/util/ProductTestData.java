@@ -28,6 +28,7 @@ public class ProductTestData {
       "890388c0-7736-11ee-b962-0242ac120002");
   public static final java.util.UUID UUID4 = java.util.UUID.fromString(
       "850393c0-7736-11ee-b962-0242ac120002");
+
   public static final String NAME = "Машина";
   public static final String NAME2 = "Яблоко";
   public static final String NAME3 = "Мышка";
@@ -38,10 +39,8 @@ public class ProductTestData {
   public static final BigDecimal PRICE2 = BigDecimal.valueOf(19.99);
   public static final BigDecimal PRICE3 = BigDecimal.valueOf(29.99);
   public static final LocalDateTime CREATED_TIME = LocalDateTime.of(2023, Month.OCTOBER, 20, 10, 0);
-  public static final LocalDateTime CREATED_TIME2 = LocalDateTime.of(2023, Month.OCTOBER, 21, 10,
-      0);
-  public static final LocalDateTime CREATED_TIME3 = LocalDateTime.of(2023, Month.OCTOBER, 22, 10,
-      0);
+  public static final LocalDateTime CREATED_TIME2 = LocalDateTime.of(2023, Month.OCTOBER, 21, 10, 0);
+  public static final LocalDateTime CREATED_TIME3 = LocalDateTime.of(2023, Month.OCTOBER, 22, 10, 0);
 
   @Builder.Default
   private UUID uuid = UUID;
