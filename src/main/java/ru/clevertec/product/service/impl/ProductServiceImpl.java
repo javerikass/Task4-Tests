@@ -50,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
       product.setUuid(uuid);
       productRepository.save(product);
     } else {
-      throw new IllegalStateException("Invalid product data");
+      throw new IllegalArgumentException("Invalid product data");
     }
   }
 

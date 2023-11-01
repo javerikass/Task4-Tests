@@ -45,5 +45,4 @@ public interface ProductMapper {
    * @return список DTO с идентификатором
    */
   List<InfoProductDto> toListInfoProductDto(List<Product> productList);
-
 }
