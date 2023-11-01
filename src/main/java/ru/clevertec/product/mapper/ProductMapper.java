@@ -7,7 +7,7 @@ import ru.clevertec.product.data.InfoProductDto;
 import ru.clevertec.product.data.ProductDto;
 import ru.clevertec.product.entity.Product;
 
-@Mapper()
+@Mapper
 public interface ProductMapper {
 
   /**
@@ -16,8 +16,6 @@ public interface ProductMapper {
    * @param productDto - DTO для маппинга
    * @return новый продукт
    */
-  @Mapping(target = "uuid", ignore = true)
-  @Mapping(target = "created", ignore = true)
   Product toProduct(ProductDto productDto);
 
   /**

@@ -1,6 +1,6 @@
 package ru.clevertec.product.repository.impl;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -10,7 +10,11 @@ import ru.clevertec.product.repository.ProductRepository;
 
 public class InMemoryProductRepository implements ProductRepository {
 
-  Map<UUID, Product> storage = new HashMap<>();
+  Map<UUID, Product> storage;
+
+  public InMemoryProductRepository(Map<UUID, Product> storage) {
+    this.storage = storage;
+  }
 
   @Override
   public Optional<Product> findById(UUID uuid) {
@@ -19,7 +23,7 @@ public class InMemoryProductRepository implements ProductRepository {
 
   @Override
   public List<Product> findAll() {
-    return storage.values().stream().toList();
+    return new ArrayList<>(storage.values());
   }
 
   @Override
@@ -33,3 +37,4 @@ public class InMemoryProductRepository implements ProductRepository {
     storage.remove(uuid);
   }
 }
+
