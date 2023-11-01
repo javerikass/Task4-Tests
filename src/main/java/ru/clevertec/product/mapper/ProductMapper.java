@@ -40,4 +40,21 @@ public interface ProductMapper {
    */
   List<InfoProductDto> toListInfoProductDto(List<Product> productList);
 
+    /**
+     * Сливает существующий продукт с информацией из DTO
+     * не меняет дату создания и идентификатор
+     *
+     * @param product    существующий продукт
+     * @param productDto информация для обновления
+     * @return обновлённый продукт
+     */
+    Product merge(Product product, ProductDto productDto);
+
+    /**
+     * Маппит текущий список продуктов в список DTO без даты
+     *
+     * @param productList - список продуктов
+     * @return список DTO с идентификатором
+     */
+    List<InfoProductDto> toListInfoProductDto(List<Product> productList);
 }

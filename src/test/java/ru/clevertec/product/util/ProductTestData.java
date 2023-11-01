@@ -6,8 +6,10 @@ import java.time.Month;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Stream;
 import lombok.Builder;
 import lombok.Data;
+import org.junit.jupiter.params.provider.Arguments;
 import ru.clevertec.product.data.InfoProductDto;
 import ru.clevertec.product.data.ProductDto;
 import ru.clevertec.product.entity.Product;
@@ -22,11 +24,18 @@ public class ProductTestData {
       "809ca3b0-7736-11ee-b962-0242ac120002");
   public static final java.util.UUID UUID3 = java.util.UUID.fromString(
       "890388c0-7736-11ee-b962-0242ac120002");
-  public static final String NAME = "Phone";
-  public static final String DESCRIPTION = "Black";
-  public static final BigDecimal PRICE = BigDecimal.valueOf(999.99);
-  public static final LocalDateTime CREATED_TIME = LocalDateTime.of(2023, Month.OCTOBER, 20, 10, 0,
-      0);
+  public static final String NAME = "Машина";
+  public static final String NAME2 = "Яблоко";
+  public static final String NAME3 = "Мышка";
+  public static final String DESCRIPTION = "Описание товара машина";
+  public static final String DESCRIPTION2 = "Описание товара яблоко";
+  public static final String DESCRIPTION3 = "Описание товара мышка";
+  public static final BigDecimal PRICE = BigDecimal.valueOf(10.99);
+  public static final BigDecimal PRICE2 = BigDecimal.valueOf(19.99);
+  public static final BigDecimal PRICE3 = BigDecimal.valueOf(29.99);
+  public static final LocalDateTime CREATED_TIME = LocalDateTime.of(2023, Month.OCTOBER, 20, 10, 0);
+  public static final LocalDateTime CREATED_TIME2 = LocalDateTime.of(2023, Month.OCTOBER, 21, 10, 0);
+  public static final LocalDateTime CREATED_TIME3 = LocalDateTime.of(2023, Month.OCTOBER, 22, 10, 0);
 
   @Builder.Default
   private UUID uuid = UUID;
@@ -56,21 +65,60 @@ public class ProductTestData {
   }
 
   public static List<InfoProductDto> getProductDtoList() {
-    InfoProductDto infoProductDto1 = InfoProductDto.builder().build();
-    InfoProductDto infoProductDto2 = InfoProductDto.builder()
-        .uuid(ProductTestData.UUID2).build();
-    InfoProductDto infoProductDto3 = InfoProductDto.builder()
-        .uuid(ProductTestData.UUID3).build();
+    InfoProductDto infoProductDto1 = ProductTestData.builder().build().buildInfoProductDto();
+
+    InfoProductDto infoProductDto2 = ProductTestData.builder()
+        .withUuid(ProductTestData.UUID2)
+        .withName(ProductTestData.NAME2)
+        .withDescription(ProductTestData.DESCRIPTION2)
+        .withPrice(ProductTestData.PRICE2)
+        .build().buildInfoProductDto();
+
+    InfoProductDto infoProductDto3 = ProductTestData.builder()
+        .withUuid(ProductTestData.UUID3)
+        .withName(ProductTestData.NAME3)
+        .withDescription(ProductTestData.DESCRIPTION3)
+        .withPrice(ProductTestData.PRICE3)
+        .build().buildInfoProductDto();
 
     return Arrays.asList(infoProductDto1, infoProductDto2, infoProductDto3);
   }
 
   public static List<Product> getProductList() {
-    Product product = Product.builder().build();
-    Product product2 = Product.builder().uuid(UUID2).build();
-    Product product3 = Product.builder().uuid(UUID3).build();
+    Product product = ProductTestData.builder().build().buildProduct();
+
+    Product product2 = ProductTestData.builder()
+        .withUuid(ProductTestData.UUID2)
+        .withName(ProductTestData.NAME2)
+        .withDescription(ProductTestData.DESCRIPTION2)
+        .withPrice(ProductTestData.PRICE2)
+        .withCreated(ProductTestData.CREATED_TIME2)
+        .build().buildProduct();
+
+    Product product3 = ProductTestData.builder()
+        .withUuid(ProductTestData.UUID3)
+        .withName(ProductTestData.NAME3)
+        .withDescription(ProductTestData.DESCRIPTION3)
+        .withPrice(ProductTestData.PRICE3)
+        .withCreated(ProductTestData.CREATED_TIME3)
+        .build().buildProduct();
 
     return Arrays.asList(product, product2, product3);
   }
+
+  public static Stream<Arguments> provideProductData() {
+    return Stream.of(
+        Arguments.of(null, "Описание товара", new BigDecimal("10.00")),
+        Arguments.of("", "Описание товара", new BigDecimal("20.00")),
+        Arguments.of("прод", "Описание товара", new BigDecimal("30.00")),
+        Arguments.of("продуктовый", "Описание товара", new BigDecimal("30.00")),
+        Arguments.of("product", "Описание товара", new BigDecimal("30.00")),
+        Arguments.of("Продукт", "Описание товара", null),
+        Arguments.of("Продукт", "Описание товара", new BigDecimal("-30.00")),
+        Arguments.of("Продукт", "Описание", new BigDecimal("30.00")),
+        Arguments.of("Продукт", "Description", new BigDecimal("30.00"))
+    );
+  }
+
 }
 

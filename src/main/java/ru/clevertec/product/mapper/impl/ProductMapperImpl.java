@@ -24,5 +24,7 @@ public class ProductMapperImpl implements ProductMapper {
     }
 
     @Override
-    public List<InfoProductDto> toListInfoProductDto(List<Product> productList) {return null;}
+    public List<InfoProductDto> toListInfoProductDto(List<Product> productList) {
+        return null;
+    }
 }
