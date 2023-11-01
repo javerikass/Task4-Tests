@@ -1,5 +1,6 @@
 package ru.clevertec.product.repository.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -17,21 +18,23 @@ public class InMemoryProductRepository implements ProductRepository {
 
   @Override
   public Optional<Product> findById(UUID uuid) {
-    return Optional.empty();
+    return Optional.ofNullable(storage.get(uuid));
   }
 
   @Override
   public List<Product> findAll() {
-    return null;
+    return new ArrayList<>(storage.values());
   }
 
   @Override
   public Product save(Product product) {
-    return null;
+    storage.put(product.getUuid(), product);
+    return product;
   }
 
   @Override
   public void delete(UUID uuid) {
+    storage.remove(uuid);
   }
-  
 }
+

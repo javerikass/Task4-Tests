@@ -39,8 +39,10 @@ public class ProductTestData {
   public static final BigDecimal PRICE2 = BigDecimal.valueOf(19.99);
   public static final BigDecimal PRICE3 = BigDecimal.valueOf(29.99);
   public static final LocalDateTime CREATED_TIME = LocalDateTime.of(2023, Month.OCTOBER, 20, 10, 0);
-  public static final LocalDateTime CREATED_TIME2 = LocalDateTime.of(2023, Month.OCTOBER, 21, 10, 0);
-  public static final LocalDateTime CREATED_TIME3 = LocalDateTime.of(2023, Month.OCTOBER, 22, 10, 0);
+  public static final LocalDateTime CREATED_TIME2 = LocalDateTime.of(2023, Month.OCTOBER, 21, 10,
+      0);
+  public static final LocalDateTime CREATED_TIME3 = LocalDateTime.of(2023, Month.OCTOBER, 22, 10,
+      0);
 
   @Builder.Default
   private UUID uuid = UUID;

@@ -118,7 +118,13 @@ class ProductServiceImplTest {
   void createShouldThrowExceptionWhenPassedInvalidData(String name, String description,
       BigDecimal price) {
     // given
-    ProductDto productDto = ProductTestData.builder().build().buildProductDto();
+    ProductDto productDto = ProductTestData.builder()
+        .withName(name)
+        .withPrice(price)
+        .withDescription(description)
+        .build().buildProductDto();
+
+    Product product = ProductTestData.builder().build().buildProduct();
 
     // when/then
     assertThrows(IllegalArgumentException.class, () -> productService.create(productDto));

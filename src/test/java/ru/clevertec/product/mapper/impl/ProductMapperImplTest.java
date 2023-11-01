@@ -8,11 +8,13 @@ import org.junit.jupiter.api.Test;
 import ru.clevertec.product.data.InfoProductDto;
 import ru.clevertec.product.data.ProductDto;
 import ru.clevertec.product.entity.Product;
+import ru.clevertec.product.mapper.ProductMapper;
+import ru.clevertec.product.mapper.ProductMapperImpl;
 import ru.clevertec.product.util.ProductTestData;
 
 class ProductMapperImplTest {
 
-  private final ProductMapperImpl mapper = new ProductMapperImpl();
+  private final ProductMapper mapper = new ProductMapperImpl();
 
   @Test
   void toProductShouldReturnProduct() {
