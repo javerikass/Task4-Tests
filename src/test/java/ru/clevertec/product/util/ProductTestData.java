@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Stream;
 import lombok.Builder;
@@ -24,6 +26,9 @@ public class ProductTestData {
       "809ca3b0-7736-11ee-b962-0242ac120002");
   public static final java.util.UUID UUID3 = java.util.UUID.fromString(
       "890388c0-7736-11ee-b962-0242ac120002");
+  public static final java.util.UUID UUID4 = java.util.UUID.fromString(
+      "850393c0-7736-11ee-b962-0242ac120002");
+
   public static final String NAME = "Машина";
   public static final String NAME2 = "Яблоко";
   public static final String NAME3 = "Мышка";
@@ -120,5 +125,29 @@ public class ProductTestData {
     );
   }
 
-}
+  public static Map<UUID, Product> getTestStorageMap() {
+    Map<UUID, Product> map = new HashMap<>();
+    Product product = ProductTestData.builder().build().buildProduct();
 
+    Product product2 = ProductTestData.builder()
+        .withUuid(ProductTestData.UUID2)
+        .withName(ProductTestData.NAME2)
+        .withDescription(ProductTestData.DESCRIPTION2)
+        .withPrice(ProductTestData.PRICE2)
+        .withCreated(ProductTestData.CREATED_TIME2)
+        .build().buildProduct();
+
+    Product product3 = ProductTestData.builder()
+        .withUuid(ProductTestData.UUID3)
+        .withName(ProductTestData.NAME3)
+        .withDescription(ProductTestData.DESCRIPTION3)
+        .withPrice(ProductTestData.PRICE3)
+        .withCreated(ProductTestData.CREATED_TIME3)
+        .build().buildProduct();
+
+    map.put(UUID, product);
+    map.put(UUID2, product2);
+    map.put(UUID3, product3);
+    return map;
+  }
+}

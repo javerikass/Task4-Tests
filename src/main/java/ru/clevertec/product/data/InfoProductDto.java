@@ -10,7 +10,7 @@ import lombok.experimental.FieldNameConstants;
 public record InfoProductDto(
 
     /**
-     * Идентификатор
+     * Идентификатор не может быть null
      */
     UUID uuid,
 
